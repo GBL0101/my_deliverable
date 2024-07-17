@@ -7,7 +7,7 @@ use App\Http\Controllers\TeacherLoginController;
 use App\Http\Controllers\TeacherRegisterController;
 use App\Http\Controllers\StudentLoginController;
 use App\Http\Controllers\StudentRegisterController;
-use App\Http\Controllers\EventController;
+use App\Http\Controllers\TeacherTimetableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,11 +62,13 @@ Route::group(['prefix' => 'teacher'], function () {
             ->name('teacher.dashboard');
         
         
-        // Route::view('/calendar', 'teacher.calendar.calendar');
+        Route::get('calendar', [TeacherTimetableController::class, 'show'])->name('teacher.timetable.show');
 
-        // Route::post('/calendar', [EventController::class, 'store'])->name('event.store');
+        Route::post('calendar', [TeacherTimetableController::class, 'store'])->name('teacher.timetable.store');
         
-        // Route::post('/calendar/event', [EventController::class, 'getEvent'])->name('event.get');
+        Route::post('calendar/event', [TeacherTimetableController::class, 'getEvent'])->name('teacher.timetable.get');
+        
+        Route::put('calendar/update', [TeacherTimetableController::class, 'update'])->name('teacher.timetable.update');
         
     });
 });
@@ -106,12 +108,13 @@ Route::group(['prefix' => 'student'], function () {
     });
 });
 
-Route::view('/calendar', 'teacher.calendar.calendar');
+// Route::get('/calendar', [TeacherTimetableController::class, 'show'])->name('teacher.timetable.show');
 
-Route::post('/calendar', [EventController::class, 'store'])->name('event.store');
+// Route::post('/calendar', [TeacherTimetableController::class, 'store'])->name('teacher.timetable.store');
 
-Route::post('/calendar/event', [EventController::class, 'getEvent'])->name('event.get');
+// Route::post('/calendar/event', [TeacherTimetableController::class, 'getEvent'])->name('teacher.timetable.get');
 
+// Route::put('/calendar/update', [TeacherTimetableController::class, 'update'])->name('teacher.timetable.update');
 // Route::get('teacher/dashboard', function() {
 //     return view('teacher.dashboard');
 // })->name('teacher.dashboard');

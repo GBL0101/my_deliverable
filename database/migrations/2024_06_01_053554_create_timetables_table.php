@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('timetables', function (Blueprint $table) {
             $table->id();
+            $table->string('name');  // イベント名
+            $table->dateTime('start_time');  // 開始時間
+            $table->dateTime('end_time');  // 終了時間
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('timetables');
     }
 };

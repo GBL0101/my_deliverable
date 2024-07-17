@@ -12,7 +12,7 @@
                     <h1 class = "text-white">Teacherのダッシュボード</h1>
                     {{ __("You're logged in!") }}
                     
-                    <div>{{ Auth::user()->name }}</div>
+                    <div>{{ Auth::guard('teacher')->user()->name }}</div>
                 </div>
             </div>
         </div>
